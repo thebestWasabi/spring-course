@@ -1,34 +1,49 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 
-<body>
+    <body>
 
-<h2>Dear Employee, please enter your details</h2>
+        <h2>Dear Employee, please enter your details</h2><br><br>
 
-<br><br>
+        <form:form action="showDetails" modelAttribute="employee" method="get">
 
-<form:form action="showDetails" modelAttribute="employee">
+            Name
+            <form:input path="name"/>
+            <form:errors path="name"/><br><br>
 
-    Name <form:input path="name"/>
-    <br><br>
-    Surname <form:input path="surname"/>
-    <br><br>
-    Salary <form:input path="salary"/>
-    <br><br>
-    Department
-    <form:select path="department">
-        <form:options items="${employee.departments}"/>
-    </form:select>
-    <br><br>
-    Which laptop do you want?
-    <form:radiobuttons path="laptop" items="${employee.laptops}"/>
-    <br><br>
+            Surname
+            <form:input path="surname"/>
+            <form:errors path="surname"/><br><br>
 
-    <input type="submit" value="OK">
+            Salary
+            <form:input path="salary"/>
+            <from:errors path="salary"/><br><br>
 
-</form:form>
+            Department
+            <form:select path="department">
+                <form:options items="${employee.departments}"/>
+            </form:select> <br><br>
 
-</body>
+            Phone number
+            <form:input path="phoneNumber"/>
+            <form:errors path="phoneNumber"/><br><br>
+
+            Email
+            <form:input path="email"/>
+            <form:errors path="email"/><br><br>
+
+            Which laptop do you want?
+            <form:radiobuttons path="laptop" items="${employee.laptops}"/><br><br>
+
+            Foreign Language(s)
+            <form:checkboxes path="languages" items="${employee.languagesList}"/><br><br>
+
+            <input type="submit" value="OK">
+
+        </form:form>
+
+    </body>
 
 </html>
